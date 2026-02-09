@@ -3,25 +3,80 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --background: #050510;
+  --foreground: #e2e8f0;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
+
+  .gradient-bg {
+    background: linear-gradient(135deg, #0f0c29 0%, #1a1040 40%, #24243e 100%);
+  }
+
+  .gradient-card {
+    background: linear-gradient(
+      160deg,
+      rgba(88, 28, 135, 0.3) 0%,
+      rgba(15, 23, 42, 0.8) 50%,
+      rgba(30, 58, 138, 0.3) 100%
+    );
+  }
+
+  .dna-glow {
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.15),
+      0 0 120px rgba(59, 130, 246, 0.08);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes pulse-glow {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
 }
